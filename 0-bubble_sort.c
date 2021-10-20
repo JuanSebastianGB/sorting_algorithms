@@ -9,7 +9,20 @@
  */
 void bubble_sort(int *array, size_t size)
 {
-	(void)array;
-	(void)size;
-	printf("something");
+	int i, tmp = 0, n = size;
+
+	while (n > 0)
+	{
+		for (i = 0; i < (int)size - 1; i++)
+		{
+			if (array[i] > array[i + 1])
+			{
+				tmp = array[i + 1];
+				array[i + 1] = array[i];
+				array[i] = tmp;
+				print_array(array, size);
+			}
+		}
+		n--;
+	}
 }
