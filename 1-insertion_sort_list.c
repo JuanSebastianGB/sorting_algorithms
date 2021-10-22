@@ -38,15 +38,14 @@ void implement_going_back(listint_t **prev, listint_t *actual,
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *actual, *prev, *tmp;
+	listint_t *actual, *prev;
 
 	if (list == NULL || *list == NULL)
 		return;
 
-	for (actual = (*list)->next; actual != NULL; actual = tmp)
+	for (actual = (*list)->next; actual != NULL; actual = actual->next)
 	{
 		prev = actual->prev;
-		tmp = actual->next;
 		implement_going_back(&prev, actual, list);
 	}
 }
