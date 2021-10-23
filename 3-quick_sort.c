@@ -50,7 +50,7 @@ int lomuto_partition(int *array, int first_index, int last_index, size_t size)
 
 /**
  * quick_sort_recurtion - Implementing recrsive sort function for the
- * Quick sort algorythm
+ * Quick sort algorithm
  * @array: Array to sort in ascendant order
  * @first_index: Lowest index
  * @last_index: Highest index
