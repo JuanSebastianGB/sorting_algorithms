@@ -29,23 +29,23 @@ void makeSwap(int *left_index, int *right_index, int *array, size_t size)
  */
 int lomuto_partition(int *array, int first_index, int last_index, size_t size)
 {
-	int *pivot = NULL, actual_index, partition_value;
+	int *pivot = NULL, actual_index, partition_index;
 
 	pivot = array + last_index;
-	for (partition_value = actual_index = first_index;
+	for (partition_index = actual_index = first_index;
 		 actual_index < last_index; actual_index++)
 	{
 		if (*pivot > array[actual_index])
 		{
-			if (partition_value < actual_index)
-				makeSwap(array + partition_value, array + actual_index, array, size);
-			partition_value++;
+			if (partition_index < actual_index)
+				makeSwap(array + partition_index, array + actual_index, array, size);
+			partition_index++;
 		}
 	}
-	if (*pivot < array[partition_value])
-		makeSwap(array + partition_value, pivot, array, size);
+	if (*pivot < array[partition_index])
+		makeSwap(array + partition_index, pivot, array, size);
 
-	return (partition_value);
+	return (partition_index);
 }
 
 /**
