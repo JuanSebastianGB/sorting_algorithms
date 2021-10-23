@@ -42,7 +42,7 @@ int lomuto_partition(int *array, int first_index, int last_index, size_t size)
 			partition_index++;
 		}
 	}
-	if (*pivot < array[partition_index])
+	if (*pivot < array[partition_index]) /*  condition when 2 elements*/
 		makeSwap(array + partition_index, pivot, array, size);
 
 	return (partition_index);
