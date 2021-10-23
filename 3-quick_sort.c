@@ -32,7 +32,8 @@ int lomuto_partition(int *array, int first_index, int last_index, size_t size)
 	int *pivot = NULL, actual_index, partition_value;
 
 	pivot = array + last_index;
-	for (partition_value = actual_index = first_index; actual_index < last_index; actual_index++)
+	for (partition_value = actual_index = first_index;
+		 actual_index < last_index; actual_index++)
 	{
 		if (*pivot > array[actual_index])
 		{
@@ -55,7 +56,8 @@ int lomuto_partition(int *array, int first_index, int last_index, size_t size)
  * @last_index: Highest index
  * @size: Size of the array
  */
-void quick_sort_recurtion(int *array, int first_index, int last_index, size_t size)
+void quick_sort_recurtion(int *array, int first_index, int last_index,
+						  size_t size)
 {
 	int partition_index = 0;
 
