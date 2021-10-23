@@ -32,15 +32,17 @@ int getMinPosition(int i, int actual, int *array, size_t size)
  * @left_index: First index
  * @right_index: Second index
  * @array: array to interact into
+ * @size: Size of the array
  * Return: Nothing
  */
-void makeSwap(int left_index, int right_index, int *array)
+void makeSwap(int left_index, int right_index, int *array, size_t size)
 {
 	int tmp = 0;
 
 	tmp = array[left_index];
 	array[left_index] = array[right_index];
 	array[right_index] = tmp;
+	print_array(array, size);
 }
 
 /**
@@ -60,7 +62,6 @@ void selection_sort(int *array, size_t size)
 	{
 		min_position = getMinPosition(i, array[i], array, size);
 		if (min_position != 0)
-			makeSwap(i, min_position, array);
-		print_array(array, size);
+			makeSwap(i, min_position, array, size);
 	}
 }
