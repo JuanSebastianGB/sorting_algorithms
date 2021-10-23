@@ -1,20 +1,4 @@
 #include "sort.h"
-
-/**
- * makeSwap - swap the values of two gived elements of an array
- * @left_index: pointer to first index
- * @right_index: pointer to second index
- * Return: Nothing
- */
-void makeSwap(int *left_index, int *right_index)
-{
-	int tmp = 0;
-
-	tmp = *left_index;
-	*left_index = *right_index;
-	*right_index = tmp;
-}
-
 /**
  * shell_sort - sorts an array of integers in ascending order using
  * the Shell sort algorithm, using the Knuth sequence
