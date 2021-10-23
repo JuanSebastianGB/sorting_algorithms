@@ -42,9 +42,7 @@ int lomuto_partition(int *array, int low, int hight, size_t size)
 		}
 	}
 	if (array[hight] < array[low_case + 1])
-	{
 		makeSwap(low_case + 1, hight, array, size);
-	}
 	return (low_case + 1);
 }
 

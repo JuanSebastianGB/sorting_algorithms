@@ -11,10 +11,9 @@
  */
 int getMinPosition(int i, int actual, int *array, size_t size)
 {
-	int j = i, min_value = 0, index_related;
+	int j = i, min_value = 0, index_related = 0;
 
 	min_value = actual;
-	index_related = 0;
 	while (j < (int)size)
 	{
 		if (array[j] < min_value)
