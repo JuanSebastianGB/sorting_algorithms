@@ -2,67 +2,68 @@
 
 /**
  * makeSwap - swap the values of two gived elements of an array
- * @left_index: First index
- * @right_index: Second index
- * @array: array to interact into
+ * @left_index: pointer to first index
+ * @right_index: pointer to second index
+ * @array: array to print
  * @size: Size of the array
  * Return: Nothing
  */
-void makeSwap(int left_index, int right_index, int *array, size_t size)
+void makeSwap(int *left_index, int *right_index, int *array, size_t size)
 {
 	int tmp = 0;
 
-	tmp = array[left_index];
-	array[left_index] = array[right_index];
-	array[right_index] = tmp;
+	tmp = *left_index;
+	*left_index = *right_index;
+	*right_index = tmp;
 	print_array(array, size);
 }
 
 /**
- * lomuto_partition - lomuto partition schema
- * @array: Array to sort in ascendant orde
+ * lomuto_partition - lomuto partition scheme
+ * @array: Array to sort in ascendant order
  * @size: Size of the array
- * @low: Lowest index
- * @hight: Highest index
+ * @first_index: Lowest index
+ * @last_index: Highest index
  * Return: Partition index
  *
  */
-int lomuto_partition(int *array, int low, int hight, size_t size)
+int lomuto_partition(int *array, int first_index, int last_index, size_t size)
 {
-	int pivot = 0, low_case = 0, j;
+	int *pivot = NULL, actual_index, counter;
 
-	pivot = array[hight];
-	low_case = low - 1;
-	for (j = low; j < hight; j++)
+	pivot = array + last_index;
+	for (counter = actual_index = first_index; actual_index < last_index; actual_index++)
 	{
-		if (pivot >= array[j])
+		if (*pivot > array[actual_index])
 		{
-			low_case++;
-			makeSwap(low_case, j, array, size);
+			if (counter < actual_index)
+				makeSwap(array + counter, array + actual_index, array, size);
+			counter++;
 		}
 	}
-	if (array[hight] < array[low_case + 1])
-		makeSwap(low_case + 1, hight, array, size);
-	return (low_case + 1);
+	if (*pivot < array[counter])
+		makeSwap(array + counter, pivot, array, size);
+
+	return (counter);
 }
 
 /**
  * quick_sort_recurtion - Implementing recrsive sort function for the
  * Quick sort algorythm
  * @array: Array to sort in ascendant order
- * @low: Lowest index
- * @hight: Highest index
+ * @first_index: Lowest index
+ * @last_index: Highest index
  * @size: Size of the array
  */
-void quick_sort_recurtion(int *array, int low, int hight, size_t size)
+void quick_sort_recurtion(int *array, int first_index, int last_index, size_t size)
 {
-	int part = 0;
+	int partition_index = 0;
 
-	if (low < hight)
+	if (first_index < last_index)
 	{
-		part = lomuto_partition(array, low, hight, size);
-		quick_sort_recurtion(array, low, part - 1, size);
-		quick_sort_recurtion(array, part + 1, hight, size);
+		partition_index = lomuto_partition(array, first_index, last_index, size);
+		quick_sort_recurtion(array, first_index, partition_index - 1, size);
+		quick_sort_recurtion(array, partition_index + 1, last_index, size);
 	}
 }
 
