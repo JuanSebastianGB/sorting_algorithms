@@ -37,7 +37,7 @@ int lomuto_partition(int *array, int first_index, int last_index, size_t size)
 	{
 		if (*pivot > array[actual_index])
 		{
-			if (partition_index < actual_index)
+			if (partition_index != actual_index)
 				makeSwap(array + partition_index, array + actual_index, array, size);
 			partition_index++;
 		}
