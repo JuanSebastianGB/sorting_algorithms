@@ -10,6 +10,9 @@ void shell_sort(int *array, size_t size)
 {
 	size_t interval = 1, index, checker, actual_value;
 	/* Getting the started interval*/
+
+	if (array == NULL || size < 2)
+		return;
 	while (interval < size / 3)
 		interval = interval * 3 + 1;
 
