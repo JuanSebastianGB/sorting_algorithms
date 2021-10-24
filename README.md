@@ -4,10 +4,6 @@
 ![](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/248/willy-wonka.png)  
   
 
-## Background Context
-
-This project is meant to be done by groups of two students. Each group of two should  [pair program](https://intranet.hbtn.io/rltoken/QcXizPyNa4DTAMLNzCwdHg "pair program")  for at least the mandatory part.
-
 ## Resources
 
 **Read or watch**:
