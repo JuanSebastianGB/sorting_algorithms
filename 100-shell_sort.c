@@ -13,7 +13,6 @@ void shell_sort(int *array, size_t size)
 	while (interval < size / 3)
 		interval = interval * 3 + 1;
 
-	printf("interval: [%ld]\n", interval);
 	while (interval > 0)
 	{
 		for (index = interval; index < size; index++)
