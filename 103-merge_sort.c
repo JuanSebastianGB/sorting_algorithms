@@ -15,7 +15,7 @@ void merge_arrays(int *array, int start, int mid, int end, int *to_store)
 
 	printf("Merging...\n[left]: ");
 	print_array(array + start, mid - start);
-	printf("[rigth]: ");
+	printf("[right]: ");
 	print_array(array + mid, end - mid);
 	for (; from_initial < mid && from_mid < end; k++)
 	{
