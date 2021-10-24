@@ -8,23 +8,25 @@
  */
 void shell_sort(int *array, size_t size)
 {
-	size_t interval = 1, index, inner, actual_value;
+	size_t interval = 1, index, checker, actual_value;
 	/* Getting the started interval*/
 	while (interval < size / 3)
 		interval = interval * 3 + 1;
 
+	printf("interval: [%ld]\n", interval);
 	while (interval > 0)
 	{
 		for (index = interval; index < size; index++)
 		{
 			actual_value = array[index];
-			inner = index;
-			while (inner > interval - 1 && array[inner - interval] >= (int)actual_value)
+			checker = index;
+			while (checker >= interval &&
+				   array[checker - interval] >= (int)actual_value)
 			{
-				array[inner] = array[inner - interval];
-				inner -= interval;
+				array[checker] = array[checker - interval];
+				checker -= interval;
 			}
-			array[inner] = actual_value;
+			array[checker] = actual_value;
 		}
 		interval = (interval - 1) / 3; /* Reducing interval */
 		print_array(array, size);
