@@ -7,7 +7,8 @@
  * @list: pointer to the first element of the list
  */
 void swap_node_from_letf_to_right(listint_t **actual_node,
-								  listint_t **tail_node, listint_t **list)
+								  listint_t **tail_node,
+								  listint_t **list)
 {
 	listint_t *next_node = (*actual_node)->next;
 
@@ -33,7 +34,8 @@ void swap_node_from_letf_to_right(listint_t **actual_node,
  */
 
 void swap_node_from_rigth_to_left(listint_t **actual_node,
-								  listint_t **tail_node, listint_t **list)
+								  listint_t **tail_node,
+								  listint_t **list)
 {
 	listint_t *prev_node = (*actual_node)->prev;
 
