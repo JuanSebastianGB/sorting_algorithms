@@ -6,39 +6,32 @@
  * @start: Left index
  * @mid: Middle index
  * @end: Right index
+ * @to_store: Array temporal to store the sorted information
  * Return: Nothing
  */
-void merge_arrays(int *array, int start, int mid, int end)
+void merge_arrays(int *array, int start, int mid, int end, int *to_store)
 {
-	int size = end - start + 1, from_initial = start, from_mid = mid + 1;
-	int temporal[size], k = 0;
+	int from_initial = start, from_mid = mid, k = 0;
 
 	printf("Merging...\n[left]: ");
 	print_array(array + start, mid - start);
 	printf("[rigth]: ");
 	print_array(array + mid, end - mid);
-	for (k = 0; from_initial <= mid && from_mid <= end; k++)
+	for (; from_initial < mid && from_mid < end; k++)
 	{
-
-		if (array[from_initial] <= array[from_mid])
-		{
-			temporal[k] = array[from_initial];
-			from_initial++;
-		}
+		if (array[from_initial] < array[from_mid])
+			to_store[k] = array[from_initial++];
 		else
-		{
-			temporal[k] = array[from_mid];
-			from_mid++;
-		}
+			to_store[k] = array[from_mid++];
 	}
-	for (; from_initial <= mid; from_initial++, k++)
-		temporal[k] = array[from_initial];
+	for (; from_initial < mid; from_initial++, k++)
+		to_store[k] = array[from_initial];
 
-	for (; from_mid <= end; from_mid++, k++)
-		temporal[k] = array[from_mid];
+	for (; from_mid < end; from_mid++, k++)
+		to_store[k] = array[from_mid];
 
-	for (from_initial = start; from_initial <= end; from_initial++)
-		array[from_initial] = temporal[from_initial - start];
+	for (k = 0, from_initial = start; from_initial < end; from_initial++, k++)
+		array[from_initial] = to_store[k];
 
 	printf("[Done]: ");
 	print_array(array + start, end - start);
@@ -50,19 +43,21 @@ void merge_arrays(int *array, int start, int mid, int end)
  * @array: Array to sort
  * @start: Left index
  * @end: Right index
+ * @to_store: Array temporal to store the sorted information
+ *
  * Return: Nothing
  *
  */
-void merge_sort_recurtion(int *array, int start, int end)
+void merge_sort_recurtion(int *array, int start, int end, int *to_store)
 {
 	int mid;
 
-	if (start < end)
+	if (end > start + 1)
 	{
-		mid = (start + end) / 2;
-		merge_sort_recurtion(array, start, mid);
-		merge_sort_recurtion(array, mid + 1, end);
-		merge_arrays(array, start, mid, end);
+		mid = start + (end - start) / 2;
+		merge_sort_recurtion(array, start, mid, to_store);
+		merge_sort_recurtion(array, mid, end, to_store);
+		merge_arrays(array, start, mid, end, to_store);
 	}
 }
 
@@ -75,5 +70,14 @@ void merge_sort_recurtion(int *array, int start, int end)
  */
 void merge_sort(int *array, size_t size)
 {
-	merge_sort_recurtion(array, 0, size - 1);
+
+	int *to_store;
+
+	if (array == NULL || size < 2)
+		return;
+	to_store = malloc(sizeof(int) * size);
+	if (to_store == NULL)
+		return;
+	merge_sort_recurtion(array, 0, size, to_store);
+	free(to_store);
 }
