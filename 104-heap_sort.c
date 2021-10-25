@@ -1,4 +1,5 @@
 #include "sort.h"
+
 /**
  * make_swap - swap the values of two gived elements of an array
  * @left_index: pointer to first index
@@ -16,7 +17,7 @@ void make_swap(int *left_index, int *right_index)
 /**
  * build_max_heap - implementing heap sort by changing elements using sift-down
  * @array: Array to sort
- * @starter_index: Parent node
+ * @starter_index: Parent node in tree
  * @size: Size of the array used to print it
  * @updatable_size: Size of the array which is varaible
  * Return: Nothing
@@ -43,6 +44,24 @@ void build_max_heap(int *array, int starter_index,
 }
 
 /**
+ * sort_heap - Sorts the heap first time
+ * @array: Arrray to sort
+ * @size: Size of the array
+ * @starter_index: Parent node in tree
+ * Return: Nothing
+ */
+
+void sort_heap(int *array, int size, int starter_index)
+{
+	while (starter_index >= 0)
+	{
+		build_max_heap(array, starter_index, size, size - 1);
+		if (!starter_index)
+			return;
+		starter_index--;
+	}
+}
+/**
  * heap_sort - sorts an array of integers in ascending order using
  * the Heap sort algorithm
  * @array: Array to sort
@@ -57,8 +76,7 @@ void heap_sort(int *array, size_t size)
 
 	if (array == NULL || size < 2)
 		return;
-	while (starter_index--) /* first sort */
-		build_max_heap(array, starter_index, size, updatable_size);
+	sort_heap(array, size, starter_index);
 	while (updatable_size > 0)
 	{
 		make_swap(array, array + updatable_size);
