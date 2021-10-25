@@ -55,9 +55,10 @@ void heap_sort(int *array, size_t size)
 	int starter_index = (((int)size - 1) - 1) / 2,
 		updatable_size = (int)size - 1;
 
+	if (array == NULL || size < 2)
+		return;
 	while (starter_index--) /* first sort */
 		build_max_heap(array, starter_index, size, updatable_size);
-
 	while (updatable_size > 0)
 	{
 		make_swap(array, array + updatable_size);
