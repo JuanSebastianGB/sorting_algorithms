@@ -57,7 +57,8 @@ void implement_bitonic_sequency(int *array, size_t updatable_size,
 	implement_bitonic_sequency(array + updatable_size / 2, updatable_size / 2,
 							   original_size, 'l');
 	implement_bitonic_merge(array, updatable_size, direction);
-	printf("Result [%li/%li] (UP):\n", updatable_size, original_size);
+	printf("Result [%li/%li] (%s):\n", updatable_size, original_size,
+		   direction == 'r' ? "UP" : "DOWN");
 	print_array(array, updatable_size);
 }
 
