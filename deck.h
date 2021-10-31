@@ -7,6 +7,13 @@
 
 #define TOTAL 52
 
+/**
+ * enum kind_e - Enumeration
+ * @SPADE: SPADE value
+ * @HEART: HEART value
+ * @CLUB: CLUB value
+ * @DIAMOND: DIAMOND value
+ */
 typedef enum kind_e
 {
 	SPADE = 0,
