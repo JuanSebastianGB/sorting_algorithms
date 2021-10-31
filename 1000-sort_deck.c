@@ -8,5 +8,6 @@
  */
 void sort_deck(deck_node_t **deck)
 {
-	printf("Testing [%s]", (*deck)->card->value);
+	if (deck == NULL || *deck == NULL)
+		return;
 }
