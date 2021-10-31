@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#define TOTAL 52
+
 typedef enum kind_e
 {
 	SPADE = 0,
