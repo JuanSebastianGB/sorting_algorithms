@@ -1,7 +1,7 @@
 #include "deck.h"
 
 /**
- * _strcmp - compare two strings
+ * *_strcmp - compare two strings
  *@s1: pointer 1
  *@s2: pointer 2
  *Return: An integer + - or 0
@@ -29,26 +29,10 @@ int _strcmp(const char *s1, const char *s2)
 
 int get_card_value(deck_node_t *card)
 {
-	if (_strcmp(card->card->value, "1") == 0)
-		return (1);
-	if (_strcmp(card->card->value, "2") == 0)
-		return (2);
-	if (_strcmp(card->card->value, "3") == 0)
-		return (3);
-	if (_strcmp(card->card->value, "4") == 0)
-		return (4);
-	if (_strcmp(card->card->value, "5") == 0)
-		return (5);
-	if (_strcmp(card->card->value, "6") == 0)
-		return (6);
-	if (_strcmp(card->card->value, "7") == 0)
-		return (7);
-	if (_strcmp(card->card->value, "8") == 0)
-		return (8);
-	if (_strcmp(card->card->value, "9") == 0)
-		return (9);
-	if (_strcmp(card->card->value, "10") == 0)
-		return (10);
+	int value = atoi(card->card->value);
+
+	if (value != 0)
+		return (value);
 	if (_strcmp(card->card->value, "Jack") == 0)
 		return (11);
 	if (_strcmp(card->card->value, "Queen") == 0)
@@ -100,10 +84,12 @@ void insertion_sort_list(deck_node_t **list, int option)
 	{
 		prev = actual->prev;
 		if (!option)
-			while (actual->prev != NULL && get_card_value(actual) < get_card_value(actual->prev))
+			while (actual->prev != NULL && get_card_value(actual) <
+											   get_card_value(actual->prev))
 				swap_nodes(&prev, actual, list);
 		else
-			while (actual->prev != NULL && actual->card->kind < actual->prev->card->kind)
+			while (actual->prev != NULL && actual->card->kind <
+											   actual->prev->card->kind)
 				swap_nodes(&prev, actual, list);
 	}
 }
